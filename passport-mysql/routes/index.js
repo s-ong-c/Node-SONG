@@ -36,7 +36,7 @@ passport.use(new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true //인증을 수행하는 인증 함수로 HTTP request를 그대로  전달할지 여부를 결정한다
 }, function (req, username, password, done) {
-  connection.query('select *from `user` where `user_id` = ?', username, function (err, result) {
+  connection.query('select *from `n1_user` where `user_id` = ?', username, function (err, result) {
     if (err) {
       console.log('err :' + err);
       return done(false, null);
@@ -106,5 +106,3 @@ router.get('/myinfo', isAuthenticated, function (req, res) {
 
 
 module.exports = router;
-
-

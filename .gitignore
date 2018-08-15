@@ -12,6 +12,7 @@
 **/.vscode
 *.DS_Store
 **/node_modules
+**/commons
 **/package-lock.json
 **/security.properties
 !build.gradle
