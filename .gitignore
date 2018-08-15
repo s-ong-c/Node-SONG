@@ -1,0 +1,17 @@
+/.metadata/
+/.recommenders/
+*.project
+*.classpath
+*.class
+*.log
+**/.gradle/
+**/.settings/
+**/bin
+**/build
+**/temp/
+**/.vscode
+*.DS_Store
+**/node_modules
+**/package-lock.json
+**/security.properties
+!build.gradle
