@@ -130,7 +130,28 @@ passport.use(new NaverStrategy({
   }
 ));
 
+/////////////////////////KaKao
+// kakao로 로그인
+passport.use(new KakaoStrategy({
+    clientID: secret_config.federation.kakao.client_id,
+    callbackURL: secret_config.federation.kakao.callback_url
+  },
+  function (accessToken, refreshToken, profile, done) {
+    var _profile = profile._json;
+    console.log('Kakao login info');
+    console.info(_profile);
+    // todo 유저 정보와 done을 공통 함수에 던지고 해당 함수에서 공통으로 회원가입 절차를 진행할 수 있도록 한다.
 
+    loginByThirdparty({
+      'auth_type': 'kakao',
+      'auth_id': _profile.id,
+      'auth_name': _profile.properties.nickname,
+      'auth_email': _profile.id
+    }, done);
+  }
+));
+
+////////////////
 // naver 로그인
 router.get('/auth/login/naver',
   passport.authenticate('naver')
@@ -144,7 +165,20 @@ router.get('/auth/login/naver/callback',
 );
 /////////////////////////네이버 로그인 콜백
 
+////////////////////////////////kakao callback
 
+// kakao 로그인
+router.get('/auth/login/kakao',
+  passport.authenticate('kakao')
+);
+// kakao 로그인 연동 콜백
+router.get('/auth/login/kakao/callback',
+  passport.authenticate('kakao', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
+////////////////////////////////////////
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
