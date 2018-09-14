@@ -40,28 +40,21 @@ passport.use(new LocalStrategy(
     console.log('LocalStrategy',username,password );
 
     if(username === authData.email){
+      console.log(1);
       if(password=== authData.password){
-        return done(null, user);
+          console.log(12);
+        return done(null, authData);
       }else{
+        console.log(123);
         return done(null, false,
           { message: 'Incorrect password.' });
       }
     }else{
+      console.log(1234);
         return done(null, false,
           { message: 'Incorrect username.' });
     }
-    /*
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-    */
+
   }
 ));
 
