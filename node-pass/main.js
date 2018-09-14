@@ -22,6 +22,12 @@ app.use(session({
 }))
 app.use(flash());
 
+var authData ={
+  email:'song@gmail.com',
+  password:'1111',
+  nickname:'song'
+};
+
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
@@ -33,6 +39,17 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log('LocalStrategy',username,password );
 
+    if(username === authData.email){
+      if(password=== authData.password){
+        return done(null, user);
+      }else{
+        return done(null, false,
+          { message: 'Incorrect password.' });
+      }
+    }else{
+        return done(null, false,
+          { message: 'Incorrect username.' });
+    }
     /*
     User.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
