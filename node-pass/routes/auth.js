@@ -11,6 +11,8 @@ var template = require('../lib/template.js');
 module.exports = function (passport) {
   router.get('/login', function (request, response) {
     var fmsg = request.flash();
+    console.log('----------');
+    console.log(fmsg);
     var feedback = '';
     if (fmsg.error) {
       feedback = fmsg.error[0];
@@ -30,6 +32,14 @@ module.exports = function (passport) {
     response.send(html);
   });
 
+
+  router.post('/login_process',
+      passport.authenticate('local',
+      { successRedirect: '/',
+        failureRedirect: '/auth/login',
+        failureFlash:true,
+        successFlash:true
+      }));
 /*
   router.post('/login_process',
     passport.authenticate('local', {
@@ -38,7 +48,7 @@ module.exports = function (passport) {
       failureFlash: true,
       successFlash: true
     }));
-*/ 
+*/
   router.get('/logout', function (request, response) {
     request.logout();
     request.session.save(function () {

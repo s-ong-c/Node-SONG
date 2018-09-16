@@ -1,9 +1,9 @@
 module.exports = function (app) {
 
     var authData = {
-        email: 'egoing777@gmail.com',
-        password: '111111',
-        nickname: 'egoing'
+        email: 'song@gmail.com',
+        password: '1111',
+        nickname: 'song'
       };
 
     var passport = require('passport'),

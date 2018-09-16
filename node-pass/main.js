@@ -21,7 +21,22 @@ app.use(session({
   store: new FileStore()
 }))
 app.use(flash());
+app.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash().
+  req.flash('msg', 'Flash is back!')
+  res.send('flash');
+});
 
+app.get('/flash-display', function(req, res){
+  // Get an array of flash messages by passing the key to req.flash()
+  var fmsg= req.flash();
+  console.log(fmsg);
+  res.send(fmsg);
+});
+
+var passport = require('./lib/passport')(app);
+
+/*
 var authData ={
   email:'song@gmail.com',
   password:'1111',
@@ -74,16 +89,18 @@ passport.use(new LocalStrategy(
   }
 ));
 
+*/
 
 
-
-
+/*
 app.post('/auth/login_process',
     passport.authenticate('local',
     { successRedirect: '/',
-      failureRedirect: '/auth/login'
+      failureRedirect: '/auth/login',
+      failureFlash:true,
+      successFlash:true
     }));
-
+*/
 app.get('*', function (request, response, next) {
   fs.readdir('./data', function (error, filelist) {
     request.list = filelist;
