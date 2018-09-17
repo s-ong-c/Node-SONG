@@ -1,0 +1,98 @@
+* {
+	/* TODO: 필요한 CSS를 채워넣어 보세요! */
+}
+
+
+input[type="text"] {
+	border: 1px solid rgb(170, 170, 170);
+}
+
+textarea {
+	width: 490px;
+	height: 380px;
+	resize: none;
+	box-sizing: border-box;
+	border-color: rgb(170, 170, 170);
+}
+
+.notepad {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	background-color: white;
+}
+
+.btnbox {
+	/*position: absolute;
+	display: flex;
+	justify-content : center;
+	align-items : center;
+	left: 0;
+	top: 0;
+	width: 500px;
+	height: 50px;*/
+}
+
+.btn {
+	width: 120px;
+	height: 40px;
+	margin: 2px;
+	border: 2px solid #f5f5f5;
+    border-radius: 10px;
+    color:#f5f5f5;
+    text-align:center;
+	text-decoration:none;
+    background: #464646;
+    box-shadow: 0 0 3px gray;
+	font-weight:bold;
+}
+
+.tabbox {
+	position: absolute;
+	display: flex;
+	overflow: auto;
+	align-items : center;
+	left: 0px;
+	top: 50px;
+	width: 500px;
+	height: 30px;
+	background-color: rgb(191, 187, 177);
+}
+
+.noteTab {
+	position: relative;
+	margin: 1.5px;
+	width: 80px;
+	height: 20px;
+	background-color: rgb(226, 228, 231);
+	text-align: center;
+}
+
+.tabinner {
+	position: absolute;
+}
+
+.tabNotename {
+}
+
+.octicon-x {
+	top: 3px;
+	right: 3px;
+}
+
+.maincontent {
+	position: absolute;
+	left: 0;
+	top: 80px;
+	width: 500px;
+	height: 420px;
+}
+
+.note {
+	position: absolute;
+	left: 0;
+	width: 500px;
+	height: 520px;
+	background-color: white;
+	/*border: 1px solid black;*/
+}
